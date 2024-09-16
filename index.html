@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Formulario de Datos de Dealer</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin-left: 100px;
+          margin-right: 100px;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+        }
+        .container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          width: 90%;
+          max-width: ;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          color: #333;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+        label {
+          margin: 10px 0 5px;
+          font-weight: bold;
+          font-size: 0.8rem;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select {
+          padding: 10px;
+          margin: 5px 0 15px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          width: 100%;
+        }
+        input[type="button"], .file-button {
+          background-color: #ff2d00;
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 10px;
+        }
+        input[type="button"]:hover, .file-button:hover {
+          background-color: #ff2d00;
+        }
+        
+        .file-input {
+          display: none;
+        }
+        .file-button-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .file-counter {
+          margin-left: 10px;
+          font-size: 14px;
+          color: #333;
+        }
+        .output {
+          margin-top: 20px;
+          font-size: 14px;
+          color: #333;
+        }
+        .bannerimg{ width:30vw; }
+        header{ background-color:#ff2d00;
+        height:50px;}
+        .section-title {
+          font-size: 18px;
+          margin: 20px 0 10px;
+          border-bottom: 2px solid #ccc;
+          padding-bottom: 5px;
+        }
+         /* Pantalla de carga */
+      .loader {
+        display: none;
+        border: 6px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 6px solid #3498db;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+        @media (max-width: 600px) {
+          .container {
+            width: 95%;
+          }
+        }
+
+      </style>
+  </head>
+ <body>
+  <header></header>
+  <img class="bannerimg" src="https://i.imgur.com/yEZJTh6.png">
+    <div class="container">
+
+      <h1>Formulario de Datos</h1>
+      <br>
+      <form id="myForm">
+        <div class="row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+              <div class="card">
+                <div class="card-body">
+                    <!-- Datos de Dealer -->
+                  <h5 class="card-title">Datos de Dealer</h5>
+                  <label for="concesionario">Concesionario</label>
+                      <select id="concesionario" name="concesionario">
+                        <option value="">Seleccionar</option>
+  <option value="MAQBETA S.A.C.">MAQBETA S.A.C.</option>
+  <option value="AUTOFONDO SAC">AUTOFONDO SAC</option>
+  <option value="DIVEMOTOR">DIVEMOTOR</option>
+  <option value="INTERAMERICANA NORTE">INTERAMERICANA NORTE</option>
+  <option value="AUTOLAND SA">AUTOLAND SA</option>
+  <option value="V. MOTOR CENTER">V. MOTOR CENTER</option>
+  <option value="VIGO MOTORS">VIGO MOTORS</option>
+  <option value="EUROSHOP">EUROSHOP</option>
+  <option value="PERUMOTOR">PERUMOTOR</option>
+  <option value="SAN ANTONIO RETAIL">SAN ANTONIO RETAIL</option>
+  <option value="AUTONIZA PERU">AUTONIZA PERU</option>
+  <option value="INCHCAPE LATAM">INCHCAPE LATAM</option>
+  <option value="CARPIO SAC">CARPIO SAC</option>
+  <option value="ALESE S.A.C.">ALESE S.A.C.</option>
+  <option value="TSUTOMU AUTOS S.A.C">TSUTOMU AUTOS S.A.C</option>
+  <option value="TSUBAKI">TSUBAKI</option>
+  <option value="WANKAMOTORS S.A.C">WANKAMOTORS S.A.C</option>
+  <option value="REVO MOTORS">REVO MOTORS</option>
+  <option value="OTROS">OTROS</option>
+</select>
+
+                  <label for="sucursalVendedor">Sucursal/Vendedor</label>
+                  <input type="text" id="sucursalVendedor" name="sucursalVendedor" placeholder="" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                     <!-- Datos de Cliente -->
+                  <h5 class="card-title">Datos de Cliente</h5>
+                  <label for="dniRuc">DNI/RUC</label>
+                  <input type="text" id="dniRuc" name="dniRuc" pattern="\d*" maxlength="11" placeholder="Solo números" required>
+                  <label for="nombreCliente">Nombre Cliente/Razón Social</label>
+                  <input type="text" id="nombreCliente" name="nombreCliente" placeholder="Nombre o Razón Social" required>
+                  <label for="trabajocliente">Tipo de trabajo</label>
+                  <select id="trabajocliente" name="trabajocliente">
+                    <option value="">Seleccionar</option>
+<option value="Dependiente">Dependiente</option>
+<option value="Independiente">Independiente</option>
+<option value="Taxista">Taxista</option>
+<option value="Rentista">Rentista</option>
+<option value="Emprendendor">Emprendendor</option>
+</select>
+<label for="plancliente">Tipo Plan</label>
+                  <select id="plancliente" name="plancliente">
+                    <option value="">Seleccionar</option>
+<option value="Flexible">Flexible</option>
+<option value="Tradicional">Tradicional</option>
+</select>
+                  <label for="telefonoCliente">Número Teléfonico</label>
+                  <input type="tel" id="telefonoCliente" name="telefonoCliente" pattern="\d*" maxlength="9" placeholder="Solo números" required>
+                  <label for="emailCliente">Correo Electrónico</label>
+                  <input type="email" id="emailCliente" name="emailCliente" placeholder="Correo electrónico" required>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                <!-- Datos de Vehículo Cotizado -->
+                 <h5 class="card-title">Datos de Vehiculo Cotizado</h5>
+                    <label for="modeloVehiculo">Modelo de Vehículo</label>
+                    <input type="text" id="modeloVehiculo" name="modeloVehiculo" placeholder="Modelo de vehículo" required>
+                    <label for="precioVehiculo">Precio</label>
+                    <input type="text" id="precioVehiculo" name="precioVehiculo" placeholder="000000" required>
+                    <label for="cuotaInicial">Cuota Inicial ($ o %)</label>
+                    <input type="text" id="cuotaInicial" name="cuotaInicial" placeholder="Cuota inicial en $ o %" required>
+                    <label for="plazoCredito">Plazo de Crédito (meses)</label>
+                    <input type="number" id="plazoCredito" name="plazoCredito" min="0" placeholder="Número de meses" required>
+            
+                  </div>
+                </div>
+              </div>
+          </div>
+
+        
+        <!-- Carga de Archivos -->
+        <div class="section-title">Carga de Archivos</div>
+        <div class="file-button-container">
+          <label class="file-button" for="myImage">Seleccionar archivos</label>
+          <input type="file" class="file-input" name="myImage" id="myImage" multiple required>
+          <span class="file-counter" id="fileCounter">0 archivos seleccionados</span>
+        </div>
+
+        <input type="button" id="subButton" value="Enviar">
+      </form>
+
+      <div class="output" id="output"></div>
+
+      <!-- Pantalla de carga -->
+      <div class="loader" id="loader"></div>
+
+      <div class="output" id="output"></div>
+    </div>
+    <script>
+  const output = document.getElementById('output');
+  const concesionario = document.getElementById('concesionario');
+  const sucursalVendedor = document.getElementById('sucursalVendedor');
+  const dniRuc = document.getElementById('dniRuc');
+  const nombreCliente = document.getElementById('nombreCliente');
+  const telefonoCliente = document.getElementById('telefonoCliente');
+  const emailCliente = document.getElementById('emailCliente');
+  const trabajoCliente = document.getElementById('trabajocliente');
+  const planCliente = document.getElementById('plancliente');
+  const modeloVehiculo = document.getElementById('modeloVehiculo');
+  const precioVehiculo = document.getElementById('precioVehiculo');
+  const cuotaInicial = document.getElementById('cuotaInicial');
+  const plazoCredito = document.getElementById('plazoCredito');
+  const myImage = document.getElementById('myImage');
+  const fileCounter = document.getElementById('fileCounter');
+  const loader = document.getElementById('loader');  // Pantalla de carga
+  
+  // Actualizar contador de archivos
+  myImage.addEventListener('change', function () {
+    const filesCount = myImage.files.length;
+    fileCounter.textContent = filesCount + ' archivos seleccionados';
+  });
+
+  document.getElementById('subButton').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Mostrar pantalla de carga
+    loader.style.display = 'block';
+
+    const files = myImage.files;
+    const promises = [];
+    let firstUpload = true; // Solo la primera vez se envían los datos del cliente
+    const uniqueID = 'ID-' + new Date().getTime(); // Generar un ID único basado en el timestamp
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+
+      promises.push(new Promise((resolve) => {
+        reader.onload = function (e) {
+          const fileData = e.target.result;
+          google.script.run
+            .withSuccessHandler((data) => {
+              resolve(data);
+            })
+            .withFailureHandler((error) => {
+              console.error('Error al enviar el archivo: ', error);
+            })
+            .doUpload({
+              firstUpload: firstUpload,         // Solo true para el primer archivo
+              uniqueID: uniqueID,               // Enviar el ID único con cada archivo
+              concesionario: concesionario.value,
+              sucursalVendedor: sucursalVendedor.value,
+              dniRuc: dniRuc.value,
+              nombreCliente: nombreCliente.value,
+              telefonoCliente: telefonoCliente.value,
+              emailCliente: emailCliente.value,
+              modeloVehiculo: modeloVehiculo.value,
+              precioVehiculo: precioVehiculo.value,
+              trabajoCliente: trabajocliente.value,
+              planCliente: plancliente.value,
+              cuotaInicial: cuotaInicial.value,
+              plazoCredito: plazoCredito.value,
+              myImage: fileData,
+              fileName: file.name,
+              mimeType: file.type
+            });
+
+          firstUpload = false; // Después del primer archivo, ya no se envían los datos del cliente
+        };
+        reader.readAsDataURL(file);
+      }));
+    }
+
+    Promise.all(promises).then((results) => {
+      // Ocultar pantalla de carga
+      loader.style.display = 'none';
+
+      Swal.fire({
+        title: '¡Registro enviado!',
+        text: 'El registro ha sido enviado exitosamente.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        // Recargar el formulario después de que el usuario confirme
+        document.getElementById('myForm').reset();
+        fileCounter.textContent = '0 archivos seleccionados'; // Reiniciar el contador de archivos
+      });
+    });
+  });
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
